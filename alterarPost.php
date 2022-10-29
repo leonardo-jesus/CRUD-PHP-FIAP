@@ -3,7 +3,7 @@
 
 <head>
   <meta charset="UTF-8">
-  <title>Criar Post</title>
+  <title>Alterar Post</title>
   <link rel="stylesheet" href="../estilo.css" />
   <!-- CSS only -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
@@ -18,7 +18,6 @@
   if (!isset($_GET['post'])) {
     //echo "Nenhum post selecionado";
   } else {
-
     $strSQL = array();
     $strSQL[] = "SELECT id, title, content, photo, date_created, category";
     $strSQL[] = "FROM posts";
@@ -37,9 +36,9 @@
     echo date('d/m/Y \à\s H:i:s');
     ?>
   </div>
-  <form name="add" id="add" method="POST" action="inserir.php" style="display: flex; flex-direction:column; max-width: 50%; margin:auto;">
+  <form name="add" id="add" method="POST" action="alterar.php" style="display: flex; flex-direction:column; max-width: 50%; margin:auto;">
 
-    <h2>Inserir nova Noticia</h2>
+    <h2>Alterar Noticia</h2>
     <br>
     <label for="title" class="form-label">Título:</label>
     <input type="text" name="title" class="form-control" required />
@@ -74,9 +73,11 @@
 
     <input type="hidden" name="date_created" value="<?php date_default_timezone_set('America/Sao_Paulo');
                                                     echo date('Y-m-d H:i:s'); ?>">
-    <input type="submit" name="botao" value="Criar" class="btn btn-success" />
+    <input type="hidden" name="id" value="<?php echo $id; ?>">
+    <input type="submit" name="botao" value="Alterar" />
     <br>
     <br>
+
   </form>
 </body>
 
